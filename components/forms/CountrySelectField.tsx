@@ -24,9 +24,11 @@ import countryList from "react-select-country-list";
 import { getFlagEmoji } from "@/lib/helper";
 
 const CountrySelect = ({
+  id,
   value,
   onChange,
 }: {
+  id: string;
   value: string;
   onChange: (value: string) => void;
 }) => {
@@ -39,10 +41,13 @@ const CountrySelect = ({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          id={id}
           variant="outline"
+          type="button"
           role="combobox"
           aria-expanded={open}
           className="country-select-trigger"
+          aria-haspopup="listbox"
         >
           {value ? (
             <span className="flex items-center gap-2">
@@ -52,7 +57,10 @@ const CountrySelect = ({
           ) : (
             "Select your country..."
           )}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <ChevronsUpDown
+            aria-hidden="true"
+            className="ml-2 h-4 w-4 shrink-0 opacity-50"
+          />
         </Button>
       </PopoverTrigger>
       <PopoverContent
@@ -108,7 +116,7 @@ export const CountrySelectField = ({
 }: CountrySelectProps) => {
   return (
     <div className="space-y-2">
-      <Label htmlFor={name} className="form-label">
+      <Label htmlFor={`${name}-trigger`} className="form-label">
         {label}
       </Label>
       <Controller
@@ -118,7 +126,11 @@ export const CountrySelectField = ({
           required: required ? `Please select ${label.toLowerCase()}` : false,
         }}
         render={({ field }) => (
-          <CountrySelect value={field.value} onChange={field.onChange} />
+          <CountrySelect
+            id={`${name}-trigger`}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
       {error && <p className="text-sm text-red-500">{error.message}</p>}
