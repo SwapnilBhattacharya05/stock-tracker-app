@@ -25,7 +25,7 @@ const InputField = ({
         placeholder={placeholder}
         disabled={disabled}
         value={value}
-        className={cn("from-input", {
+        className={cn("form-input", {
           "opacity-50 cursor-not-allowed": disabled,
         })}
         // SPREAD ALL THE PROPERTIES OF THE register FUNCTION FOR THIS SPECIFIC FIELD, AND GIVE THE validation MESSAGES FOR THAT SPECIFIC FIELD

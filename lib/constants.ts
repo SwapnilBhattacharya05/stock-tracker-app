@@ -297,7 +297,6 @@ export const POPULAR_STOCK_SYMBOLS = [
   "NET",
   "OKTA",
   "TWLO",
-  "ZM",
 
   // Consumer & Delivery Apps
   "DOCU",
