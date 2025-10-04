@@ -20,7 +20,7 @@ if (!cache) {
   };
 }
 
-export const connectToDatabase = async () => {
+export const connectToDatabase = async (): Promise<typeof mongoose> => {
   if (!MONGODB_URI)
     throw new Error(
       "Please provide a MONGODB_URI in the environment variables",
@@ -49,7 +49,7 @@ export const connectToDatabase = async () => {
     console.error("Connection failed, retrying...");
     throw error;
   }
-  console.log(`Connected to database ${process.env.NODE_ENV} - ${MONGODB_URI}`);
+  console.log(`Connected to database ${process.env.NODE_ENV}`);
 
   return cache.conn;
 };
