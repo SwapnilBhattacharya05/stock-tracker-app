@@ -105,8 +105,8 @@ const SearchCommand = ({
               {displayStocks?.map((stock, i) => (
                 <li key={stock.symbol} className="search-item">
                   <Link
-                    href={`/stock/${stock.symbol}`}
-                    onClick={() => handleSelectStock(stock.symbol)}
+                    href={`/stocks/${stock.symbol}`}
+                    onClick={() => handleSelectStock()}
                     className="search-item-link"
                   >
                     <TrendingUp className="h-4 w-4 text-gray-500" />
@@ -116,7 +116,7 @@ const SearchCommand = ({
                         {stock.symbol} | {stock.exchange} | {stock.type}
                       </div>
                     </div>
-                    <Star />
+                    {/*<Star />*/}
                   </Link>
                 </li>
               ))}
